@@ -4,9 +4,9 @@ import { User } from './entity/user.entity';
 import { Repository } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
 import { CreateUserDto } from './dto/create-user.dto';
-import { Result, fail, success } from 'src/utils/result';
+import { Result, fail, success } from '../utils/result';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { UniversityApplicationService } from 'src/university-application/university-application.service';
+import { UniversityApplicationService } from '../university-application/university-application.service';
 
 @Injectable()
 export class UserService {
