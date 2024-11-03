@@ -16,8 +16,8 @@ import { UniversityApplicationModule } from './university-application/university
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: '220.90.157.224', // 데이터베이스 호스트
-      port: 5433, // 데이터베이스 포트
+      host: '61.78.89.183', // 데이터베이스 호스트
+      port: 5432, // 데이터베이스 포트
       username: 'postgres', // 데이터베이스 사용자 이름
       password: 'root', // 데이터베이스 비밀번호
       database: 'myuni', // 데이터베이스 이름
