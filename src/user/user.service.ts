@@ -83,15 +83,15 @@ export class UserService {
     return success('사용자가 성공적으로 삭제되었습니다.', user);
   }
 
-  async findUserAndUniversityApplications(userId: string): Promise<Result<any>> {
+  async findUserAndUniversityApplications(customUrl: string): Promise<Result<any>> {
     
-    const user = await this.userRepository.findOne({ where: { userId } });
+    const user = await this.userRepository.findOne({ where: { customUrl } });
     
     if (!user) {
       return fail('사용자를 찾을 수 없습니다.');
     }
   
-    const universityApplications = await this.universityApplicationService.findAll(userId);
+    const universityApplications = await this.universityApplicationService.findAll(user.userId);
   
     // 수시 및 정시 지원 여부 확인
     const EarlyDecisionMessages: string[] = [];

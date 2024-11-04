@@ -30,9 +30,9 @@ export class UserController {
     return this.userService.remove(userId);
   }
 
-  @Get('public/:userId')
-  findOnePublic(@Param("userId") userId: string) {
-    return this.userService.findUserAndUniversityApplications(userId);
+  @Get('public/:customUrl')
+  findOnePublic(@Param("customUrl") customUrl: string) {
+    return this.userService.findUserAndUniversityApplications(customUrl);
   }
 
   @Get('list')

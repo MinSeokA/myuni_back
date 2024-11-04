@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "author": "",
+  "main": "src/main.ts",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
@@ -31,6 +32,8 @@
     "@nestjs/typeorm": "^10.0.2",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
+    "has-flag": "^5.0.1",
+    "is-extglob": "^2.1.1",
     "jsonwebtoken": "^9.0.2",
     "passport": "^0.7.0",
     "passport-google-oauth20": "^2.0.0",
