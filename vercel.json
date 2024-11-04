@@ -8,14 +8,9 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
+      "src": "/api/v1/(.*)",
       "dest": "src/main.ts",
       "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"]
-    },
-    {
-      "src": "/api/(.*)",
-      "dest": "src/main.ts"
     }
   ]
-  
 }
