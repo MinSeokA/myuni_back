@@ -18,6 +18,18 @@
       "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"]
     },
     {
+      "src": "/api/swagger-ui.css",
+      "dest": "src/main.ts"
+    },
+    {
+      "src": "/api/swagger-ui-standalone-preset.js",
+      "dest": "src/main.ts"
+    },
+    {
+      "src": "/api/swagger-ui-bundle.js",
+      "dest": "src/main.ts"
+    },
+    {
       "src": "/(.*)",
       "dest": "src/main.ts",
       "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"]
