@@ -5,8 +5,8 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-    // Swagger 설정
-    const config = new DocumentBuilder()
+  // Swagger 설정
+  const config = new DocumentBuilder()
     .setTitle('My University API')
     .setDescription('My University backend API 문서입니다.')
     .setVersion('1.0')
@@ -14,19 +14,19 @@ async function bootstrap() {
     .addBearerAuth() // JWT 인증 추가
 
     .build();
-    
+
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document, {
     customSiteTitle: 'My University API',
     customfavIcon: 'https://cdn.lunaiz.com/lunaiz_logo/logo-l.svg',
     customJs: [
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui-bundle.js',
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui-standalone-preset.js',
+      '/api/swagger-ui-bundle.js',
+      '/api/swagger-ui-standalone-preset.js',
     ],
     customCssUrl: [
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui.min.css',
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui-standalone-preset.min.css',
-      'https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/5.0.0/swagger-ui.css',
+      '/api/swagger-ui.min.css',
+      '/api/swagger-ui.css',
+      '/api/swagger-ui-standalone-preset.min.css',
     ],
   });
 

@@ -1,4 +1,6 @@
 import { Module } from '@nestjs/common';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -10,20 +12,24 @@ import { UniversityApplicationModule } from './university-application/university
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'swagger'), // swagger 파일 경로
+      serveRoot: '/api/', // 접속 시 사용할 경로
+    }),
     ConfigModule.forRoot({
       envFilePath: '.env',
       isGlobal: true
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: '61.78.89.183', // 데이터베이스 호스트
-      port: 5432, // 데이터베이스 포트
-      username: 'postgres', // 데이터베이스 사용자 이름
-      password: 'root', // 데이터베이스 비밀번호
-      database: 'myuni', // 데이터베이스 이름
+      host: '61.78.89.183',
+      port: 5432,
+      username: 'postgres',
+      password: 'root',
+      database: 'myuni',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true, // 개발 중에는 true로 설정 (생산에서는 false로 설정)
-  }),
+      synchronize: true,
+    }),
     AuthModule,
     UserModule,
     UniversityModule,
