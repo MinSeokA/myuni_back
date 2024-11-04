@@ -7,14 +7,14 @@ async function bootstrap() {
 
     // Swagger 설정
     const config = new DocumentBuilder()
-    .setTitle('API Documentation')
-    .setDescription('API description for my project')
+    .setTitle('My University API')
+    .setDescription('My University backend API 문서입니다.')
     .setVersion('1.0')
     .addBearerAuth() // JWT 인증 추가
     .build();
     
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('docs', app, document); // '/api-docs' 경로에 Swagger UI 설정
+  SwaggerModule.setup('api', app, document); // '/api-docs' 경로에 Swagger UI 설정
 
   
   await app.listen(3000);

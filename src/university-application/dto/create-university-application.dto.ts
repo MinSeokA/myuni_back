@@ -1,12 +1,15 @@
+import { ApiOperation, ApiProperty } from '@nestjs/swagger';
 import { IsString, IsNotEmpty, IsArray } from 'class-validator';
 
 export class CreateUniversityApplicationDto {
   // 지원자 아이디
+  @ApiProperty({ description: '사용자아이디' })
   @IsString()
   @IsNotEmpty()
   applicantUserId: string;
 
   // 대학 JSONB (배열로 구성)
+  @ApiProperty({ description: '대학 지원서' })
   @IsArray()
   @IsNotEmpty()
   university: Array<{
