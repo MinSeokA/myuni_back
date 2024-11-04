@@ -13,11 +13,10 @@ async function bootstrap() {
     .setVersion('1.0')
     .setBasePath('api/v1')
     .addBearerAuth() // JWT 인증 추가
-
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document, {
+  SwaggerModule.setup('docs', app, document, {
     customSiteTitle: 'My University API',
     customfavIcon: 'https://cdn.lunaiz.com/lunaiz_logo/logo-l.svg',
     customJs: [
@@ -30,7 +29,6 @@ async function bootstrap() {
       '/api/swagger-ui-standalone-preset.min.css',
     ],
   });
-
   app.enableCors();
   app.useGlobalPipes(new ValidationPipe({ whitelist: true }));
   app.setGlobalPrefix('api/v1');
