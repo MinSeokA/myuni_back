@@ -14,7 +14,7 @@ import { UniversityApplicationModule } from './university-application/university
   imports: [
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '.', 'public'), // swagger 파일 경로
-      serveRoot: '/api/', // 접속 시 사용할 경로
+      serveRoot: '/swagger/', // 접속 시 사용할 경로
     }),
     ConfigModule.forRoot({
       envFilePath: '.env',

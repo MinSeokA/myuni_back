@@ -20,13 +20,13 @@ async function bootstrap() {
     customSiteTitle: 'My University API',
     customfavIcon: 'https://cdn.lunaiz.com/lunaiz_logo/logo-l.svg',
     customJs: [
-      '/api/swagger-ui-bundle.js',
-      '/api/swagger-ui-standalone-preset.js',
+      '/swagger/swagger-ui-bundle.js',
+      '/swagger/swagger-ui-standalone-preset.js',
     ],
     customCssUrl: [
-      '/api/swagger-ui.min.css',
-      '/api/swagger-ui.css',
-      '/api/swagger-ui-standalone-preset.min.css',
+      '/swagger/swagger-ui.min.css',
+      '/swagger/swagger-ui.css',
+      '/swagger/swagger-ui-standalone-preset.min.css',
     ],
   });
   app.enableCors();
