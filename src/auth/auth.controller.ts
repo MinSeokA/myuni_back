@@ -19,8 +19,8 @@ export class AuthController {
   @UseGuards(AuthGuard('google'))
   async googleAuthRedirect(@Req() req: Request, @Res() res: Response) {
     const token = await this.authService.generateJwtToken(req.user.userId, req.user.email);
-    const encoded = Buffer.from(`auth-callback?token=${token}&status=success&source=google&email=${req.user.email}`).toString('base64');
+    const encoded = Buffer.from(`token=${token}&status=success&source=google&email=${req.user.email}`).toString('base64');
 
-    return res.redirect(`https://myuni.lunaiz.com/${encoded}`);
+    return res.redirect(`https://myuni.lunaiz.com/auth-callback?${encoded}`);
   }
 }
