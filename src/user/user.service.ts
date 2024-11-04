@@ -141,6 +141,31 @@ export class UserService {
     });
   }
 
+  // 사용저 정의 URL 생성 및 중복확인
+  async createCustomUrl(userId: string, customUrl: string): Promise<Result<User>> {
+    // 사용자 찾기
+    const existingUser = await this.userRepository.findOne({
+      where: { customUrl },
+    });
+    if (existingUser) {
+      return fail('이미 존재하는 커스텀 URL입니다.');
+    }
+
+    // 사용자 찾기
+    const user = await this.userRepository.findOne({
+      where: { userId },
+    });
+    if (!user) {
+      return fail('사용자를 찾을 수 없습니다.');
+    }
+
+    // 사용자 URL 생성
+    user.customUrl = customUrl;
+    await this.userRepository.save(user);
+
+    return success('사용자 URL이 성공적으로 생성되었습니다.', user);
+  }
+
   // 사용자 리스트
   async findAll(): Promise<Result<User[]>> {
     const users = await this.userRepository.find();
