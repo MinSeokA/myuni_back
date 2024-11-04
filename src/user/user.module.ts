@@ -4,7 +4,6 @@ import { UserService } from './user.service';
 import { User } from './entity/user.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config'; // Import ConfigModule
-import { UniversityApplicationService } from '../university-application/university-application.service';
 import { UniversityApplicationModule } from '../university-application/university-application.module';
 
 @Module({
