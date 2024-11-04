@@ -19,11 +19,8 @@ export class AuthController {
   @UseGuards(AuthGuard('google'))
   async googleAuthRedirect(@Req() req: Request, @Res() res: Response) {
     const token = await this.authService.generateJwtToken(req.user.userId, req.user.email);
+    const encoded = Buffer.from(`auth-callback?token=${token}&status=success&source=google&email=${req.user.email}`).toString('base64');
 
-    return res.json({ 
-      message: "사용자가 성공적으로 인증되었습니다.",
-      status: true,
-      AccessToken: token,
-    });
+    return res.redirect(`https://myuni.lunaiz.com/${encoded}`);
   }
 }
