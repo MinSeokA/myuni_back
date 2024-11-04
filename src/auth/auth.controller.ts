@@ -21,6 +21,6 @@ export class AuthController {
     const token = await this.authService.generateJwtToken(req.user.userId, req.user.email);
     const encoded = Buffer.from(`token=${token}&status=success&source=google&email=${req.user.email}`).toString('base64');
 
-    return res.redirect(`https://myuni.lunaiz.com/auth-callback?${encoded}`);
+    return res.redirect(`https://uni.lunaiz.com/auth-callback?${encoded}`);
   }
 }
