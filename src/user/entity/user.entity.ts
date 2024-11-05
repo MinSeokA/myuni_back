@@ -18,7 +18,7 @@ export class User {
   photo: string;
 
   // 사용자 정의 URL - 유니크 
-  @Column({ unique: true })
+  @Column({ unique: true, default: null })
   customUrl: string; 
 
   // 수시 지원 공개 여부
