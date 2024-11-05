@@ -27,7 +27,7 @@ export class UserController {
     return this.userService.update(user);
   }
 
-  @Get('profile')
+  @Post('profile')
   @ApiOperation({ summary: '사용자 조회' })
   @ApiProperty({ type: String, description: '사용자 조회' })
   @UseGuards(JwtAuthGuard)
