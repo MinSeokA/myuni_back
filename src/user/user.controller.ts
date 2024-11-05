@@ -1,9 +1,10 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Req, Res, UseGuards } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
 import { JwtAuthGuard } from '../guard/jwt-auth.guard';
 import { ApiOperation, ApiParam, ApiProperty, ApiTags } from '@nestjs/swagger';
 import { UpdateUserDto } from './dto/update-user.dto';
+import { Request, Response } from 'express';
 
 @ApiTags('user')
 @Controller('user')
@@ -26,12 +27,12 @@ export class UserController {
     return this.userService.update(user);
   }
 
-  @Get('profile/:userId')
+  @Get('profile')
   @ApiOperation({ summary: '사용자 조회' })
-  @ApiProperty({ type: String, description: '사용자 조회', example: 'userId' })
+  @ApiProperty({ type: String, description: '사용자 조회' })
   @UseGuards(JwtAuthGuard)
-  findOne(@Param("userId") userId: string) {
-    return this.userService.findOne(userId);
+  findOne(@Req() req: Request, @Res() res: Response) {
+    return this.userService.findOne(req.user.userId);
   }
 
   @Delete('delete/:userId')
