@@ -1,10 +1,10 @@
-import { Body, Controller, Delete, Get, Param, Post, Put, Req, Res, UseGuards } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Post, Put, Query, Req, Res, UseGuards } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
 import { JwtAuthGuard } from '../guard/jwt-auth.guard';
 import { ApiOperation, ApiParam, ApiProperty, ApiTags } from '@nestjs/swagger';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { Request, Response } from 'express';
+import { Request, Response, query } from 'express';
 
 @ApiTags('user')
 @Controller('user')
@@ -60,6 +60,14 @@ export class UserController {
     customUrl: string;
   }) {
     return this.userService.createCustomUrl(body.userId, body.customUrl);
+  }
+
+  // 사용자 정의 URL 조회
+  @Get('custom-url/check')
+  @ApiOperation({ summary: '사용자 정의 URL 조회' })
+  @ApiParam({ name: 'customUrl', description: '사용자 정의 URL 조회', example: 'customUrl' })
+  checkCustomUrl(@Query("customUrl") customUrl: string) {
+    return this.userService.CheckByCustomUrl(customUrl);
   }
 
   @Get('list')

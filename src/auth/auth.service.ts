@@ -14,9 +14,10 @@ export class AuthService {
 
   // Generates a JWT token for a user
   async generateJwtToken(userId: any, email: any): Promise<any> {
-    const payload = { sub: userId, email: email };
+    // 만료 1시간
+    const payload = { sub: userId, email: email};
     
-    return this.jwtService.sign(payload);
+    return this.jwtService.sign(payload, { expiresIn: '1h' });
   }
 
   // Finds or creates a user from Google profile information

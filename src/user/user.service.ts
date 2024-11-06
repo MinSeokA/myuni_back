@@ -166,6 +166,19 @@ export class UserService {
     return success('사용자 URL이 성공적으로 생성되었습니다.', user);
   }
 
+  // 사용자 정의 URL로 사용자 찾기
+  async CheckByCustomUrl(customUrl: string): Promise<Result<User>> {
+    const check = await this.userRepository.findOne({
+      where: { customUrl },
+    });
+
+    if (!check) {
+      return success('사용 가능한 커스텀 URL입니다.', check);
+    }
+
+    return fail('이미 존재하는 커스텀 URL입니다.');
+  } 
+
   // 사용자 리스트
   async findAll(): Promise<Result<User[]>> {
     const users = await this.userRepository.find();
